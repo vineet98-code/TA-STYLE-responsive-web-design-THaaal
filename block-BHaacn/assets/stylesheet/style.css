@@ -89,7 +89,8 @@ h1,h2,h3,h4,h5,h6 {
     max-width: 1380px;
     margin: 0 auto;
     width:100%; 
-    border: 2px solid red;
+    /* padding: 0 2rem; */
+    /* border: 2px solid red; */
 }
 .padding{
     padding: 60px 0;
@@ -228,6 +229,7 @@ margin-right: 24px;
     text-decoration: none;
 }
 .brand{
+    text-decoration: none;
     color:rgb(255, 255, 255);
     text-transform: capitalize;
     font-size: 36px;
@@ -235,6 +237,9 @@ margin-right: 24px;
 }
 .nav-menu-item a:hover{
     color: var(--accent); 
+}
+#toggle, .bars{
+    display: none;
 }
 /* HERO SECTION */
 .hero{
@@ -304,7 +309,6 @@ strong{
     font-weight: 900;
     position: absolute;
     top: -21px;
-    
 }
 
 /* SCHEDULE SECTION */
@@ -322,11 +326,13 @@ strong{
     margin: 24px 0;
 }
 .schedule-content{
-    margin-bottom: 100px;
+    margin-bottom: -22px;
+    margin-top: -22px;
 }
 .schedule-image {
     height: 150px;
     width: 16%;
+    font: 0;
     display: inline-block;
     border-radius: 10px;
 }
@@ -344,6 +350,14 @@ strong{
     height: 150px;
     background-color: var(--accent);
     border-radius: 50%;
+    border: 3px solid #F9234D;
+}
+.line{
+    width: 2px;
+    height: 100px;
+    border: none;
+    border-right: 2px dotted #F9234D;
+    margin-left: 70px;
 }
 .schedule-para{
     color: #01122D;
@@ -365,7 +379,6 @@ strong{
     background-color: #ffffff;
     border: 3px dashed #F9234D;
 }
-
 .schedule-btn{
     margin-top: 40px;
     text-align: center;
@@ -375,15 +388,20 @@ strong{
 .topic{
     background-color: #DFECFF;
 }
-.topics-image img{
+.topics-image {
 
-  width:200px;
-  height:90px;
+  /* width:200px;
+  height:90px; */
+}
+.topics-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .topics-image{
-    padding: 12px;
+    padding: 56px;
 }
-
 .active{
     border-radius: 8px;
     background-color: var(--accent);
@@ -406,10 +424,13 @@ strong{
   
 }
 .topics-content img:hover{
+    color: #F9234D;
+}
+.topics-content img:hover{
     color: var(--accent); 
 }
 /* VIDEO SECTION */
-.video-content{
+/* .video-content{
     background: url(../media/banner.png) center center no-repeat;
     background-size: cover;
     width:100%;
@@ -418,31 +439,39 @@ strong{
     display: flex;
     justify-content: center;
     align-items: center;
+} */
+
+.video-content iframe{
+    border-radius: 12px;
+    width: 100%;
+    height: 100%;
 }
-.white-circle{
-    width: 100px;
-    height: 100px;
-    background-color: #ffffff;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.iframe-container{
+    height: 0;
+    padding-bottom: 56.25%;
+    width: 100%;
+    position: relative;
 }
-.white-circle i{
-    color: var(--accent);
-    font-size: 60px;
+.video iframe{
+    border-radius: 12px;
+    position: absolute;
+    left: 0;
+    top:0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
 }
+
 
 /* NEWS */
 .news{
     background-color: #DFECFF;
-    
 }
 .news-para{
     /* margin-bottom: 80px; */
     color: var(--textDark);
 }
-
 .news-image img{
    width: 100%;
 }
@@ -498,38 +527,142 @@ h5{
     border-radius: 40px;
 }
 
-/* RESPONSIVE DESIGN */ 
+/* RESPONSIVE DESIGN AND MEDIA QUERY */ 
 @media screen and (max-width: 1200px){
     .container {
         max-width: 1140px;
     }
 }
 @media screen and (max-width: 992px){
+    html{
+        font-size: 14px;
+    }
     .container {
         max-width: 960px;
     }
 }
 @media screen and (max-width: 768px){
+    html{
+        font-size: 12px;
+    }
     .container {
         max-width: 720px;
     }
+    .sm-column{
+        flex-direction: column;
+    }
+    /* Nav-bar */
+    .nav{
+        display: none;
+    }
+    #toggle:checked ~ .nav{
+        display: inline-block;
+    }
+    .bars{
+        font-size: 2rem;
+        color: var(--textWhite);
+        display: inline-block;
+    }
+    .nav-item {
+      margin: 16px 0;
+    }
+     
 }
+/* SMALLER SCREEN */
 @media screen and (max-width: 576px){
+    html{
+        font-size: 10px;
+    }
     .container {
         max-width: 540px;
     }
 } 
+
 @media screen and (max-width: 768px){
     html{
         font-size: 10px;
     }
-    .flex-100{
+    /* General */
+    .container{
+        max-width: 720px;
+    }
+    .sm-flex-100{
         flex: 0 1 100%;
         margin: 2rem 0; 
     }
-    .wrap{
-    flex-wrap: wrap;
+    .sm-column{
+        flex-direction: column;
     }
+    .sm-wrap{
+        flex-wrap: wrap;
+        }
+    .sm-width-full{
+        width:100%;
+    }
+    .order-1{
+        order: 1;
+    }
+    /* Navbar */
+    .nav-bar{
+        background-color: rgba(0, 0, 0, 0.4);
+        height: 80px;
+        position: fixed;
+        z-index: 999;
+    }
+    .nav{
+        display: none;
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        height: 100vh;
+        background-color: rgba(35, 52, 123,0.9);
+        padding-top: 12rem;
+        z-index: 9;
+    }
+    #toggle:checked ~ .nav {
+        display: inline-block;
+    }
+    .bars{
+        font-size: 2rem;
+        color: var(--textWhite);
+        display: inline-block;
+        z-index: 99;
+    }
+    .brand, .bars{
+        position: fixed;
+        top: 1.5rem;
+    }
+    .brand{
+        left: 2rem;
+    }
+    .bars{
+        right: 2rem;
+    }
+    .nav-menu-item{
+        margin: 16px 0;
+    }
+    /* HERO */
+    .hero{
+        height:auto;
+        padding: 6rem 0;
+    }
+    .hero img{
+        max-height: 500px;
+        object-fit: cover;
+        border-top-left-radius: 3rem;
+        border-bottom-right-radius: 3rem;
+    }
+    .h4{
+        font-size: 24px;
+        font-weight: 800;
+    }
+    .sm-flex-25{
+        flex: 0 1 50%;
+    }
+    
+    
     .article-img img{
         width: 100%;
         padding: 20px;
@@ -537,19 +670,17 @@ h5{
     .blog-img img{
         width: 100%;
     }
+    .para{
+        font-size: 26px;
+        font-weight: 400;
+    }
     .column{
         flex-direction: column;
     }
     .nav-bar{
         padding: 2rem 0;
     }
-    .nav-menu-item{
-        margin: 0rem  1.53rem;
-    }
-    .logo{
-        margin-bottom: 2rem;
-    }
-    small{
-        margin-bottom: 2rem;
-    }
+    
+
+    
 }
